@@ -12,13 +12,14 @@ class PartyType(Model):
 class Party(Model):
 
     date = DateTimeField(null=False, blank=False)
-    create_date = DateTimeField(default=datetime.now())
-    adress = CharField(max_length=130)
+    name = TextField(max_length=75, null=True)
+    adress = CharField(max_length=50)
     party_type = ForeignKey(PartyType, on_delete = DO_NOTHING)
     free_space = SmallIntegerField(null = True)
-    description = TextField(max_length=200)
-    name = TextField(max_length=75, null=True)
-    author = ForeignKey(User, on_delete= CASCADE, null=True, blank = True)
+    description = TextField(max_length=100)
+    author = ForeignKey(User, on_delete= CASCADE)
+    create_date = DateTimeField(auto_now_add=True)
+    # author will be add to party in form
 
 
 
