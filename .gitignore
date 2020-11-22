@@ -1,2 +1,4 @@
 venv
 .idea
+/partee4mee/db.sqlite3
+/partee4mee/partee/migrations/
