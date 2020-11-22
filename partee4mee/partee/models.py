@@ -14,6 +14,9 @@ class Party(Model):
     free_space = SmallIntegerField(null = True)
     description = TextField(max_length=200)
     name = TextField(max_length=75, null=True)
+    # foreign key -> author
+    
 
     def __str__(self):
         return f"{self.name} {self.date}"
+
