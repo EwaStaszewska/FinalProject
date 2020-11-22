@@ -1,8 +1,12 @@
 <h1>PARTEE4ME</h1>
 
+<h3>Ilość imprez w naszej bazie danych wynosi {{all|length}}.</h3>
+
 {% for item  in all %}
     <p><strong>{{item.name}}</strong></p>
     {{ item.date  }}
 {% endfor %}
 
-<h3>Ilość imprez w naszej bazie danych wynosi {{all|length}}.</h3>
+
+
+
