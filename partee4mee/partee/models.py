@@ -1,5 +1,6 @@
-from django.db.models import Model, CharField, DateTimeField, TextField, SmallIntegerField, ForeignKey, DO_NOTHING
+from django.db.models import Model, CharField, DateTimeField, TextField, SmallIntegerField, ForeignKey, DO_NOTHING,CASCADE
 from datetime import datetime
+from django.contrib.auth.models import User
 
 class PartyType(Model):
     type = CharField(max_length=50)
@@ -17,7 +18,8 @@ class Party(Model):
     free_space = SmallIntegerField(null = True)
     description = TextField(max_length=200)
     name = TextField(max_length=75, null=True)
-    # foreign key -> author
+    author = ForeignKey(User, on_delete= CASCADE, null=True, blank = True)
+
 
 
     def __str__(self):
