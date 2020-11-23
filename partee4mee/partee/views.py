@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Party
 from .forms import PartyForm
+from datetime import datetime
 
 def main(request):
     all_paty = Party.objects.all()
@@ -10,8 +11,8 @@ def main(request):
     city_contains_query = request.GET.get('filter_by_city')
     date_query = request.GET.get('filter_by_date')
     # city_contains_query,date_query are a var in form in main.html.
-    all_city_query = Party.objects.all()
-    all_date_query = Party.objects.all()
+    all_city_query = Party.objects.all().order_by('-date')
+    all_date_query = Party.objects.all().order_by('-date')
     city_text = ''
     date_text = ''
 
@@ -19,7 +20,8 @@ def main(request):
     if request.GET.get('filter_by_city') or request.GET.get('filter_by_date'):
         if city_contains_query != "" and date_query=="":
             if city_contains_query != '' and city_contains_query is not None:
-                all_city_query = all_city_query.filter(city__icontains= city_contains_query)
+                all_city_query = all_city_query.filter(city__icontains= city_contains_query).order_by('-date')
+                # all_city_query = [i for i in all_city_query if i.date >= datetime.now()].order_by('-date')
                 all_date_query = []
                 if len(all_city_query) == 0:
                     city_text = "Unfortunately in your city we don't have party..."
@@ -27,6 +29,7 @@ def main(request):
         elif date_query != '' and date_query is not None:
             if date_query != '' and date_query is not None:
                 all_date_query = all_date_query.filter(date__gte = date_query)
+                # all_date_query = [i for i in all_date_query if i.date >= datetime.now()].order_by('-date')
                 all_city_query = []
                 if len(all_date_query) == 0:
                     date_text = "Unfortunately in this date we don't have party..."
