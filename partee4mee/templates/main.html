@@ -35,7 +35,7 @@
     {% else %}
         {% for party in city_filter%}
             <div class="card bg-primary text-center m-2 p-2" style="width:30%"><p>There is a {{party.party_type}}:{{party.date}} <br> {{party.description}}   [{{party.id}}] <br>
-            {{party.adress}}</p></div>
+            {{party.city}}</p></div>
         {% endfor %}
     {% endif %}
     </div>

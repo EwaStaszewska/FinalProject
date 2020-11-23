@@ -12,7 +12,7 @@ def main(request):
     all_city_query = Party.objects.all() 
 
     if city_contains_query != '' and city_contains_query is not None:
-        all_city_query = all_city_query.filter(adress__icontains= city_contains_query)
+        all_city_query = all_city_query.filter(city__icontains= city_contains_query)
     
     #end searching
 
