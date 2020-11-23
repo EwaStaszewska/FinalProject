@@ -5,5 +5,5 @@ class PartyForm(ModelForm):
     
     class Meta:
         model = Party  
-        fields = ["date", "adress", "party_type", "free_space",
+        fields = ["date", "city", "party_type", "free_space",
         "description", "name"]

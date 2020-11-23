@@ -13,7 +13,7 @@ class Party(Model):
 
     date = DateTimeField(null=False, blank=False)
     name = TextField(max_length=75, null=True)
-    adress = CharField(max_length=50)
+    city = CharField(max_length=50)
     party_type = ForeignKey(PartyType, on_delete = DO_NOTHING)
     free_space = SmallIntegerField(null = True)
     description = TextField(max_length=100)
