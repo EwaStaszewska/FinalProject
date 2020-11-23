@@ -10,7 +10,7 @@ def main(request):
     city_contains_query = request.GET.get('filter_by_city')
     date_query = request.GET.get('filter_by_date')
     # city_contains_query,date_query are a var in form in main.html.
-    all_city_query = Party.objects.all() 
+    all_city_query = Party.objects.all()
     all_date_query = Party.objects.all()
     city_text = ''
     date_text = ''
@@ -26,16 +26,15 @@ def main(request):
 
         elif date_query != '' and date_query is not None:
             if date_query != '' and date_query is not None:
-                all_date_query = all_date_query.filter(date__icontains = date_query)
+                all_date_query = all_date_query.filter(date__gte = date_query)
                 all_city_query = []
                 if len(all_date_query) == 0:
                     date_text = "Unfortunately in this date we don't have party..."
 
     else:
-        city_text == ""
-        date_text == ""
-        all_date_query ==[]
-        all_city_query == []
+        city_text = ""
+        date_text = ""
+        all_date_query =[]
 
     
     #end searching
