@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Party
 from .forms import PartyForm
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
+
 
 def main(request):
     all_paty = Party.objects.all()
@@ -53,10 +55,15 @@ def main(request):
     return render(request, "main.html",context)
 
 
-def add(requset):
-    form = PartyForm(requset.POST or None)
-
+# requirements to add form: only for logged in users.
+@login_required
+def add(request):
+    form = PartyForm(request.POST or None)
+    
     if form.is_valid():
-        form.save()
+        temporary_form = form.save(commit=False)
+        temporary_form.author = request.user
+        temporary_form.save()
+        return redirect(main)
 
-    return render(requset, 'add_party.html', {"form":form}) 
+    return render(request, 'add_party.html', {"form":form}) 
