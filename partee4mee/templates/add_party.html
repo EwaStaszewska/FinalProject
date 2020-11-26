@@ -13,8 +13,8 @@
 <div>
     <form method='POST'>
         {% csrf_token %}
-        {{ form }}
-        <button type="submit" >Add</button>
+        {{ form.as_p }}
+        <button type="submit">Add</button>
     </form>
 </div>
 </body>
