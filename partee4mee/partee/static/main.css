@@ -1,0 +1,206 @@
+body h1 {
+    color:  blue;
+}
+
+.img_below_navbar {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 650px;
+/*	background-image: url('event_1.jpg');*/
+	background-color: grey;
+	position: relative;
+/*	filter: blur(2px);*/
+    background-position: center;
+}
+
+.carousel-item {
+	height: 615px;
+	color: black;
+	font-size: 45px;
+}
+
+.container {
+	text-align: center;
+	margin-top: 355px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.container h1 {
+	color: black;
+	font-size: 75px;
+}
+
+.img_down_site {
+    margin-top: 55px;
+    margin-bottom: 55px;
+    height: 650px;
+    background-image: url('party.jpg');
+    background-repeat: no-repeat;
+    background-attachment: attachment;
+    background-position: center;
+    filter: blur(1px);
+}
+
+/*#events {
+	display: inline-block;
+}
+
+#button {
+	display: inline-block;
+	margin: 10px;
+}
+*/
+.form-group {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#search_button {
+	margin-bottom: 35px;
+	display: inline;
+}
+
+/*#events {
+	height: 179px;
+	border-radius: 1px;
+	border-color: black;
+}*/
+
+section {
+	width: 100%;
+	height: 100vh;
+	/*background: url(1.jpg);*/
+	background: white;
+	background-size: cover;
+
+}
+
+section .leftBox {
+	width: 50%;
+	height: 100%;
+	float: left;
+	padding: 50px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+section .leftBox .content {
+	color: white;
+	background: rgba(0,0,0,.5);
+	padding: 40px;
+	transition: .5s;
+}
+
+section .leftBox .content:hover {
+	background-color: #e91e63;
+}
+
+section .leftBox .content h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 50px;
+	text-transform: uppercase;
+	font-family: 'Roboto Condensed', sans-serif;
+	color: white;
+}
+
+section .events {
+	position: relative;
+	width: 50%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	float: right;
+	box-sizing: border-box;
+	overflow: scroll;
+}
+
+section .events ul {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+	display: list-item;
+	padding: 40px;
+	box-sizing: border-box;
+}
+
+section .events ul li {
+	position: relative;
+	list-style: none;
+	background: #fff;
+	box-sizing: border-box;
+	height: 200px;
+	margin: 15px 0;
+}
+
+section .events ul li .time {
+	position: relative;
+	padding: 20px;
+	background: #262626;
+	box-sizing: border-box;
+	width: 30%;
+	height: 100%;
+	float: left;
+	text-align: center;
+	transition: .5s;
+	color: white;
+}
+
+section .events ul li:hover .time {
+	background-color: #e91e63;
+}
+
+section .events ul li .time h2 {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	line-height: 30px;
+}
+
+section .events ul li .time h2 span {
+	font-size: 30px;
+}
+
+section .events ul li .details {
+	padding: 20px;
+	background: #fff;
+	box-sizing: border-box;
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.footer {
+	height: 35px;
+	background-color: black;
+}
+
+.footer p{
+	color: white;
+	text-align: center;
+}
+
+.container #con_1 {
+/*	position: relative;*/
+}
+
+#con_0 {
+	background: url(lets_party.jpg);
+}
+
+#con_1 {
+	background-image: url('party.jpg');
+	background-size: cover;
+}
+
+#con_2 {
+	background: url(event_1.jpg);
+}
+
+#con_3 {
+	background: url(event_2.jpg);
+}
