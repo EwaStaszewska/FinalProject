@@ -188,19 +188,25 @@ section .events ul li .details {
 /*	position: relative;*/
 }
 
-#con_0 {
-	background: url(lets_party.jpg);
+.con_0 {
+	background: url('event_1.jpg');
+	background-position: center;
+	background-size: cover;
 }
 
-#con_1 {
+.con_1 {
 	background-image: url('party.jpg');
 	background-size: cover;
 }
 
-#con_2 {
-	background: url(event_1.jpg);
+.con_2 {
+	background: url('lets_party.jpg');
+	background-position: center;
+	background-size: cover;
 }
 
-#con_3 {
-	background: url(event_2.jpg);
+.con_3 {
+	background: url('event_2.jpg');
+	background-position: center;
+	background-size: cover;
 }
