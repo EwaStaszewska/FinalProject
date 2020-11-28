@@ -1,22 +1,33 @@
+*{
+	margin: 0;
+	padding:0;
+	box-sizing:border-box
+}
+
+body{
+	background-color: #f8f9fa !important
+}
+
+
 body h1 {
     color:  blue;
 }
 
-.img_below_navbar {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	height: 650px;
-/*	background-image: url('event_1.jpg');*/
-	background-color: grey;
-	position: relative;
-/*	filter: blur(2px);*/
-    background-position: center;
+.carousel-shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .15);
+    /* z-index: -1; */
 }
 
 .carousel-item {
-	height: 615px;
-	color: black;
-	font-size: 45px;
+	height: 30rem;
+	position: relative;
+	/* color: black;
+	font-size: 45px; */
 }
 
 .container {
@@ -189,24 +200,20 @@ section .events ul li .details {
 }
 
 .con_0 {
-	background: url('event_1.jpg');
 	background-position: center;
 	background-size: cover;
 }
 
 .con_1 {
-	background-image: url('party.jpg');
 	background-size: cover;
 }
 
 .con_2 {
-	background: url('lets_party.jpg');
 	background-position: center;
 	background-size: cover;
 }
 
 .con_3 {
-	background: url('event_2.jpg');
 	background-position: center;
 	background-size: cover;
 }
