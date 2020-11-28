@@ -20,6 +20,7 @@ from partee.views import main, add
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', main, name="main"),
-    path('add_party/', add, name="add_event")
+    path('add_party/', add, name="add_event"),
+    path ('accounts/', include('accounts.urls'))
 ]
 
