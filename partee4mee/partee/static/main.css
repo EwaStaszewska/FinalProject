@@ -19,13 +19,18 @@ body h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .15);
-	/* z-index: -1; */}
+    background-color: rgba(0, 0, 0, .4);
+	z-index: -1;}
 	
 
+
+.carousel-text{
+	z-index:1
+}
 .carousel-item {
 	height: 30rem;
 	position: relative;
+	z-index:0
 	/* color: black;
 	font-size: 45px; */
 }
@@ -213,6 +218,7 @@ section .events ul li .details {
 .con_1 {
 	background-image: url('party.jpg');
 	background-size: cover;
+	background-position: center;
 }
 
 .con_2 {
