@@ -52,12 +52,15 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active con_0">
-            <div class="carousel-shadow"></div>
-            <img class="d-block w-100" src="../static/event_1.jpg" alt="First slide">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
+                <div class="carousel-shadow"></div>
+                <p class='display-3'>xxx</p>
+                <p class='d-sm-block'>xxx</p>
+            </div>
         </div>
 
         <div class="carousel-item con_1">
-            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center align-item-center">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
                 <div class="carousel-shadow"></div>
                 <p class='display-3'>xxx</p>
                 <p class='d-sm-block'>xxx</p>
@@ -65,12 +68,18 @@
         </div>
         
         <div class="carousel-item con_2">
-            <div class="carousel-shadow"></div>
-            <img class="d-block w-100" src="../static/lets_party.jpg" alt="Third slide">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light ">
+                <div class="carousel-shadow"></div>
+                <p class='display-3'>xxx</p>
+                <p class='d-sm-block'>xxx</p>
+            </div>
         </div>
         <div class="carousel-item con_3">
-            <div class="carousel-shadow"></div>
-            <img class="d-block w-100" src="../static/party.jpg" alt="fourth slide">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
+                <div class="carousel-shadow"></div>
+                <p class='display-3'>xxx</p>
+                <p class='d-sm-block'>xxx</p>
+            </div>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -84,6 +93,7 @@
     </div>
 
 
+    <!-- End carusel -->
 
 
 {% comment %} forms to  {% endcomment %}
@@ -106,32 +116,30 @@
         <h2>All Events</h2>
     </div>
 
-        {{city_text}}
+        {% comment %} {{city_text}}
 
-<!--{% for party in city_filter %}-->
-<!--            <div class="card bg-primary text-center m-2 p-2" style="width:30%" id="events">-->
-<!--                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>-->
-<!--                {{party.city}}<br> free space: {{party.free_space}}</p>-->
+        {% for party in city_filter %}
+            <div class="card bg-primary text-center m-2 p-2" style="width:30%" id="events">
+               <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>
+               {{party.city}}<br> free space: {{party.free_space}}</p>
 
-<!--                <div class="form-inline my-2 my-lg-0" id="button">-->
-<!--                    <a href="#" class="btn btn-warning">Sign up</a>-->
-<!--                </div>-->
-<!--            </div>-->
+               <div class="form-inline my-2 my-lg-0" id="button">
+                   <a href="#" class="btn btn-warning">Sign up</a>
+                </div>
+            </div>
 
-<!--        {% endfor %}-->
+        {% endfor %}
 
         {{date_text}}
 
-<!--        {% for party in date_filter %}-->
-<!--            <div class="card bg-warning text-center m-2 p-2" style="width:30%" id="events">-->
-<!--                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}     [{{party.id}}] <br>-->
-<!--                {{party.city}} <br> free space: {{party.free_space}}</p>-->
-
-<!--                <button type="Submit" id="search_button" class="btn btn-primary">Sign up</button>-->
-
-<!--            </div>-->
-<!--        {% endfor %} &ndash;&gt;-->
-<!--    </div>-->
+        {% for party in date_filter %}
+           <div class="card bg-warning text-center m-2 p-2" style="width:30%" id="events">-->
+               <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}     [{{party.id}}] <br>
+                {{party.city}} <br> free space: {{party.free_space}}</p>
+                <button type="Submit" id="search_button" class="btn btn-primary">Sign up</button>-->
+            </div>
+       {% endfor %}
+   </div> {% endcomment %}
 
     <div class="container" id="con_card">
 
