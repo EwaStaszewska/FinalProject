@@ -8,8 +8,8 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = authenticate(username=cd['username'],
-                                password=cd['password'])
+            user = authenticate(username=cd['nazwa użytkownika'],
+                                password=cd['hasło'])
             if user is not None:
                 if user.is_active:
                     login(request, user)
@@ -18,8 +18,8 @@ def user_login(request):
                     return HttpResponse('Konto jest zablokowane')
             else:
                 return HttpResponse( 'Nieprawidłowe dane uwierzytelniające')
-        else:
-            form = LoginForm()
-            return render(request, 'account/login.html', {'form':form})
+    else:
+        form = LoginForm()
+        return render(request, 'accounts/login.html', {'form':form})
 
 # Create your views here.
