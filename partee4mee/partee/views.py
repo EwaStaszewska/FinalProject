@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def main(request):
-    all_paty = Party.objects.all()
+    all_party = Party.objects.all()
 
 
     # searching by form
@@ -45,7 +45,7 @@ def main(request):
     #end searching
 
     context = {
-        'all':all_paty,
+        'all':all_party,
         'city_filter': all_city_query,
         'city_text':city_text,
         'date_filter': all_date_query,
