@@ -1,8 +1,8 @@
-{% extends "base.html %}
+{% extends "base.html" %}
 
-{% block title %} Logowanie{ % endblock %}
+{% block title %} Logowanie {% endblock %}
 
-{% block content %}
+{% block page %}
     <h1> Logowanie </h1>
     {% if form.errors %}
     <p>
@@ -20,4 +20,4 @@
             <p><input type=""submit" value= "Zaloguj"></p>
         </form>
     </div>
-{%endblock%}
+{% endblock %}
