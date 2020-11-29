@@ -1,17 +1,18 @@
+from django import forms
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Hasło,'
-                                widget=forms.PasswordInput)
+    password = forms.CharField(label='Hasło',
+                               widget=forms.PasswordInput)
     password2 = forms.CharField(label= 'Powtórz hasło',
-                                widget= forms.PasswordInput)
+                               widget= forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
 
-    def clean_password(selfself):
+    def clean_password(self):
         cd = self.cleaned_data
-        if cd['password'] ! = cd['password2']
-            raise forms.ValidationError ('Hasłą nie są identyczne.')
-    return cd['password2']
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Hasłą nie są identyczne.')
+        return cd['password2']
