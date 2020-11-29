@@ -22,7 +22,7 @@ def user_login(request):
                 return HttpResponse( 'Nieprawidłowe dane uwierzytelniające')
     else:
         form = LoginForm()
-        return render(request, 'accounts/login.html', {'form':form})
+        return render(request, 'registration/login.html', {'form':form})
 
 def register(request):
     if request.method == 'POST':
@@ -33,11 +33,13 @@ def register(request):
                 user_form.cleaned_data['password'])
             new_user.save()
             return render(request,
-                          'accounts/register_done.html',
+                            'register.html',
             {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request,
+                    'register.html',
+                    {'user_form': user_form })
 
-        else:
-            user_form = UserRegistrationForm()
-        return render(request,
-                      'accounts/register.html',
-                      {'user_form: user_form'})
+
+

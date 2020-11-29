@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -14,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -33,7 +35,7 @@
                     <a class="nav-link text-white" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Registration</a>
+                    <a class="nav-link text-white" href="{% url 'register' %}">Registration</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'add_event' %}">Add new event</a>
@@ -41,6 +43,9 @@
             </ul>
         </div>
     </nav>
+
+
+
 
     <!-- Carusel -->
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
