@@ -5,7 +5,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def main(request):
     form = SearchingForm(request.GET)
     total_advertisement = Party.objects.all()

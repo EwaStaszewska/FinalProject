@@ -2,22 +2,25 @@
 
 {% block title %} Logowanie {% endblock %}
 
+    <p> {{user.username}} </p>
 {% block page %}
     <h1> Logowanie </h1>
     {% if form.errors %}
     <p>
-        Nazwa użytkownika lub hasło są nieprawidłowe.
-        Spróbuj ponownie.
+        The name of user or password are incorrect
+        Please, try again.
     </p>
     {% else %}
-    <p> Wypełnij poniższy formularz, aby się zalogować:</p>
+    <p> Please, fill below forms to login:</p> 
     {% endif %}
-    <div class= "login-form"
-         <form action="" {%url 'login' %} "method= "post">
+    <div class= "login-form">
+        <form method = "post">
             {{ form.as_p }}
             {% csrf_token %}
-            <imput type = "hidden" name ="next" value ="{{next}}"/>
-            <p><input type=""submit" value= "Zaloguj"></p>
+            {% comment %} <input type = "hidden" name ="next" value ="{{next}}"/> {% endcomment %}
+            {% comment %} <a href="{% url "add_event" %}" class="btn btn-primary" type="submit">Log in </a> {% endcomment %}
+            <button type="submit">Ok</button>
+            {% comment %} <button type="submit"><a href="{% url "add_event" %}">Log in </a></button> {% endcomment %}
         </form>
     </div>
 {% endblock %}
