@@ -1,214 +1,35 @@
 *{
 	margin: 0;
 	padding:0;
-	box-sizing:border-box
+	box-sizing:border-box;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 body{
-	background-color: #f8f9fa !important
+	/* background-color: #f8f9fa !important */
 }
 
 
-body h1 {
-    color:  blue;
-}
-
+/* carousel  */
 .carousel-shadow{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .4);
-	z-index: -1;}
+    background-color: rgba(0, 0, 0, .2);
+	z-index: -1;
+}
 	
-
 
 .carousel-text{
 	z-index:1
 }
 .carousel-item {
-	height: 30rem;
+	height: 26rem;
 	position: relative;
 	z-index:0
-	/* color: black;
-	font-size: 45px; */
 }
-
-.container {
-	text-align: center;
-	margin-top: 355px;
-	font-family: 'Roboto Condensed', sans-serif;
-}
-
-.container h1 {
-	color: black;
-	font-size: 75px;
-}
-
-.img_down_site {
-    margin-top: 55px;
-    margin-bottom: 55px;
-    height: 650px;
-    background-image: url('party.jpg');
-    background-repeat: no-repeat;
-    background-attachment: attachment;
-    background-position: center;
-    filter: blur(1px);
-}
-
-/*#events {
-	display: inline-block;
-}
-
-#button {
-	display: inline-block;
-	margin: 10px;
-}
-*/
-
-#center_text {
-    font-family: 'Abril Fatface', cursive;
-}
-
-.form-group {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#search_button {
-	margin-bottom: 35px;
-	display: inline;
-}
-
-/*#events {
-	height: 179px;
-	border-radius: 1px;
-	border-color: black;
-}*/
-
-section {
-	width: 100%;
-	height: 100vh;
-	/*background: url(1.jpg);*/
-	background: white;
-	background-size: cover;
-
-}
-
-section .leftBox {
-	width: 50%;
-	height: 100%;
-	float: left;
-	padding: 50px;
-	margin-bottom: 10px;
-	box-sizing: border-box;
-}
-
-section .leftBox .content {
-	color: white;
-	background: rgba(0,0,0,.5);
-	padding: 40px;
-	transition: .5s;
-}
-
-section .leftBox .content:hover {
-	background-color: #e91e63;
-}
-
-section .leftBox .content h1 {
-	margin: 0;
-	padding: 0;
-	font-size: 50px;
-	text-transform: uppercase;
-	font-family: 'Roboto Condensed', sans-serif;
-	color: white;
-}
-
-section .events {
-	position: relative;
-	width: 50%;
-	height: 100%;
-	background: rgba(0,0,0,.5);
-	float: right;
-	box-sizing: border-box;
-	overflow: scroll;
-}
-
-section .events ul {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	margin: 0;
-	display: list-item;
-	padding: 40px;
-	box-sizing: border-box;
-}
-
-section .events ul li {
-	position: relative;
-	list-style: none;
-	background: #fff;
-	box-sizing: border-box;
-	height: 200px;
-	margin: 15px 0;
-}
-
-section .events ul li .time {
-	position: relative;
-	padding: 20px;
-	background: #262626;
-	box-sizing: border-box;
-	width: 30%;
-	height: 100%;
-	float: left;
-	text-align: center;
-	transition: .5s;
-	color: white;
-}
-
-section .events ul li:hover .time {
-	background-color: #e91e63;
-}
-
-section .events ul li .time h2 {
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 25px;
-	line-height: 30px;
-}
-
-section .events ul li .time h2 span {
-	font-size: 30px;
-}
-
-section .events ul li .details {
-	padding: 20px;
-	background: #fff;
-	box-sizing: border-box;
-	width: 70%;
-	height: 100%;
-	float: left;
-}
-
-.footer {
-	height: 35px;
-	background-color: black;
-}
-
-.footer p{
-	color: white;
-	text-align: center;
-}
-
-.container #con_1 {
-/*	position: relative;*/
-}
-
 .con_0 {
 	background: url('event_1.jpg');
 	background-position: center;
@@ -233,34 +54,39 @@ section .events ul li .details {
 	background-size: cover;
 }
 
-#con_card {
-    background: #AFADAD;
-    position: relative;
-    margin-top: 25px;
-    padding: 25px;
+
+
+
+/* searching form */
+
+.first-div-form{
+	background-color:lightgrey
 }
 
-#con_card_date {
-    background: #AFADAD;
-    position: relative;
-    margin-top: 25px;
-    padding: 25px;
+.card-searching{
+	transition: .5s;
+}
+.card-searching:hover{
+	transform: scale(1.05);
+	color: white;
+	background-color: lightslategray !important;
 }
 
-#card_box {
-    display: inline-block;
+/* footer  */
+
+.footer {
+	height: 35px;
+	background-color: black;
 }
 
-#card_box:hover {
-    background: #909090;
+.footer p{
+	color: white;
 }
 
-#sign_button {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 7px;
-}
 
-#card_box_date {
-    display: inline-block;
-}
+
+@media screen and (max-width: 1200px) {
+	.carousel-item {
+	  height: 22rem;
+	}
+  }

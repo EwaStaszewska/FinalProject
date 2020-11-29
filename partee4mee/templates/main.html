@@ -17,8 +17,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'main' %}">Partee4Mee</a>
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <a class="navbar-brand text-white" href="{% url 'main' %}">Partee4Mee</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,28 +27,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link text-white" href="#">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Registration</a>
+                    <a class="nav-link text-white" href="#">Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{% url 'add_event' %}">Add new event</a>
+                    <a class="nav-link text-white" href="{% url 'add_event' %}">Add new event</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <!-- Carusel -->
-    <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        {% comment %} <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> {% endcomment %}
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active con_0">
@@ -67,7 +67,7 @@
             </div>
         </div>
         
-        <div class="carousel-item con_2">
+        {% comment %} <div class="carousel-item con_2">
             <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light ">
                 <div class="carousel-shadow"></div>
                 <p class='display-3'>xxx</p>
@@ -80,7 +80,7 @@
                 <p class='display-3'>xxx</p>
                 <p class='d-sm-block'>xxx</p>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -95,97 +95,50 @@
 
     <!-- End carusel -->
 
-
-{% comment %} forms to  {% endcomment %}
-    <div class="text-center bg-light">
-        <form>
-            <div class="form-group" style="width:50%; font-family: 'Abril Fatface', cursive;" >
-                <label for="exampleFormControlInput1">Search for the party here...</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City..." name='filter_by_city'>
-            </div>
-
-            <div class="form-group" style="width:50%; font-family: 'Abril Fatface', cursive;">
-                <input type="date" class="form-control" id="exampleFormControlInput" placeholder="Please select a date..." name='filter_by_date'>
-            </div>
-            <button type="Submit" id="search_button" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-
-    <!-- Events -->
-    <div class='text-center bg-secondary' id="center_text">
-        <h2>All Events</h2>
-    </div>
-
-        {% comment %} {{city_text}}
-
-        {% for party in city_filter %}
-            <div class="card bg-primary text-center m-2 p-2" style="width:30%" id="events">
-               <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>
-               {{party.city}}<br> free space: {{party.free_space}}</p>
-
-               <div class="form-inline my-2 my-lg-0" id="button">
-                   <a href="#" class="btn btn-warning">Sign up</a>
-                </div>
-            </div>
-
-        {% endfor %}
-
-        {{date_text}}
-
-        {% for party in date_filter %}
-           <div class="card bg-warning text-center m-2 p-2" style="width:30%" id="events">-->
-               <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}     [{{party.id}}] <br>
-                {{party.city}} <br> free space: {{party.free_space}}</p>
-                <button type="Submit" id="search_button" class="btn btn-primary">Sign up</button>-->
-            </div>
-       {% endfor %}
-   </div> {% endcomment %}
-
-    <div class="container" id="con_card">
-
-        {% for party in city_filter %}
-        <div class="card border-dark mb-3" id="card_box" style="max-width: 18rem;">
-            <div class="card-header">
-                <strong>{{party.name}}</strong>
-            </div>
-
-            <div class="card-body text-dark" style="font-family: 'Abril Fatface', cursive;">
-                <h5 class="party_date">Date: <strong>{{party.date}}</strong></h5>
-              <p class="party_location">Location: {{party.city}}</p>
-              <p class="party_desc">{{party.description}}</p>
-              <p class="free_space">Free space: {{party.free_space}}</p>
-            </div>
-
-            <div class="sign_btn">
-                <div class="form-inline my-2 my-lg-0" style="font-family: 'Abril Fatface'">
-                    <a href="#" class="btn btn-warning" id="sign_button">Sign up</a>
-                </div>
+    <div class="container-fluid">
+        <div class="row text-center bg-light">
+            <div class="col-12 text-center p-4  first-div-form p-5">
+                <h2>Choice your party from {{total| length}} advertisement</h2>
             </div>
         </div>
-        {% endfor %}
-
-        {% for party in date_filter %}
-        <div class="card border-dark mb-3" id="card_box_date" style="max-width: 18rem;">
-            <div class="card-header">
-                <strong>{{party.name}}</strong>
-            </div>
-
-            <div class="card-body text-dark" style="font-family: 'Abril Fatface', cursive;">
-                <h5 class="party_date">Date: <strong>{{party.date}}</strong></h5>
-              <p class="party_location">Location: {{party.city}}</p>
-              <p class="party_desc">{{party.description}}</p>
-              <p class="free_space">Free space: {{party.free_space}}</p>
-            </div>
-        {% endfor %}
     </div>
 
-    <div style="clear: both;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <form method="GET" class="p-4 mt-3">
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </form> 
+                <h3 class="mb-4 mt-2"> Choice and have fun! We found {{all| length}} </h3> 
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center mt-2 mb-4">  
+                {% for party in all %}
+                    <div class="row">
+                        <div class="col-1 col-md-2"></div>
+                        <div class="col-10 col-md-8">
+                            <div class="card bg-primary text-center mb-4 p-2 card-searching">
+                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}</p>
+                                <div class="mb-2 text-center">
+                                    <div class="col-3"></div>
+                                    <a href="#" class="btn btn-warning col-6">Sign up</a>
+                                    <div class="col-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1 col-md-2"></div>
+                    </div>
+                {% endfor %}
+        
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 
-
-    <!-- Img down site -->
-<!--         <div class="img_down_site"></div> -->
+ 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer text-center p-1">
         <p>Partee4Mee &copy; All rights reserved.</p>
     </div>
 

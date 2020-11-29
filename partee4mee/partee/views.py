@@ -1,58 +1,42 @@
 from django.shortcuts import render,redirect
 from .models import Party
-from .forms import PartyForm
+from .forms import PartyForm,SearchingForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
 
+
 def main(request):
-    all_party = Party.objects.all()
-
-
+    form = SearchingForm(request.GET)
+    total_advertisement = Party.objects.all()
+    all_party = Party.objects.all().order_by('date')
     # searching by form
-    city_contains_query = request.GET.get('filter_by_city')
-    date_query = request.GET.get('filter_by_date')
+    city = request.GET.get('city',False)
+    date = request.GET.get('date',False)
+    bfield = request.GET.get('bolean_field',False)
     # city_contains_query,date_query are a var in form in main.html.
-    all_city_query = Party.objects.all().order_by('-date')
-    all_date_query = Party.objects.all().order_by('-date')
-    city_text = ''
-    date_text = ''
 
-
-    if request.GET.get('filter_by_city') or request.GET.get('filter_by_date'):
-        if city_contains_query != "" and date_query=="":
-            if city_contains_query != '' and city_contains_query is not None:
-                all_city_query = all_city_query.filter(city__icontains= city_contains_query).order_by('-date')
-                # all_city_query = [i for i in all_city_query if i.date >= datetime.now()].order_by('-date')
-                all_date_query = []
-                if len(all_city_query) == 0:
-                    city_text = "Unfortunately in your city we don't have party..."
-
-        elif date_query != '' and date_query is not None:
-            if date_query != '' and date_query is not None:
-                all_date_query = all_date_query.filter(date__gte = date_query)
-                # all_date_query = [i for i in all_date_query if i.date >= datetime.now()].order_by('-date')
-                all_city_query = []
-                if len(all_date_query) == 0:
-                    date_text = "Unfortunately in this date we don't have party..."
-
-    else:
-        city_text = ""
-        date_text = ""
-        all_date_query =[]
-
+    if city and not date:
+        all_party = all_party.filter(city__icontains=city).order_by('date')
+    if city and date:
+        all_party = all_party.filter(city__icontains=city).filter(date__gte=date).order_by('date')
+    if city and date and bfield:
+        all_party = all_party.filter(city__icontains=city).filter(date__icontains=date).order_by('date')
+    if date and bfield:
+        all_party = all_party.filter(date__icontains=date).order_by('date')
+    if date and not bfield:
+        all_party = all_party.filter(date__gt=date).order_by('date')
     
-    #end searching
 
     context = {
         'all':all_party,
-        'city_filter': all_city_query,
-        'city_text':city_text,
-        'date_filter': all_date_query,
-        'date_text': date_text
+        'total':total_advertisement,
+        'form':form
+
     }
 
     return render(request, "main.html",context)
+
 
 
 # requirements to add form: only for logged in users.
