@@ -19,7 +19,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-primary">
+    <nav class="navbar navbar-expand-lg navbar_bg">
         <a class="navbar-brand text-white" href="{% url 'main' %}">Partee4Mee</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,8 +52,10 @@
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        {% comment %} <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> {% endcomment %}
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active con_0">
@@ -72,7 +74,7 @@
             </div>
         </div>
         
-        {% comment %} <div class="carousel-item con_2">
+        <div class="carousel-item con_2">
             <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light ">
                 <div class="carousel-shadow"></div>
                 <p class='display-3'>xxx</p>
@@ -85,7 +87,21 @@
                 <p class='display-3'>xxx</p>
                 <p class='d-sm-block'>xxx</p>
             </div>
-        </div> {% endcomment %}
+        </div>
+        <div class="carousel-item con_4">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
+                <div class="carousel-shadow"></div>
+                <p class='display-3'>xxx</p>
+                <p class='d-sm-block'>xxx</p>
+            </div>
+        </div>
+        <div class="carousel-item con_5">
+            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
+                <div class="carousel-shadow"></div>
+                <p class='display-3'>xxx</p>
+                <p class='d-sm-block'>xxx</p>
+            </div>
+        </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
