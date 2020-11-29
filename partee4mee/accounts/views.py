@@ -39,5 +39,5 @@ def register(request):
         else:
             user_form = UserRegistrationForm()
         return render(request,
-                      'accouts/register.html',
+                      'accounts/register.html',
                       {'user_form: user_form'})
