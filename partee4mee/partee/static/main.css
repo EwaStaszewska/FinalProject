@@ -10,9 +10,16 @@ body{
 	/* background-color: #f8f9fa !important */
 }
 
+/* navbar */
+
+.navbar_bg{
+	background-color: #89cff0
+}
 
 /* carousel  */
-.carousel-shadow{
+
+/* dont delete carousel-shadow! Commented for Ewa to check photos */
+/* .carousel-shadow{
     position: absolute;
     top: 0;
     left: 0;
@@ -20,7 +27,7 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, .2);
 	z-index: -1;
-}
+} */
 	
 
 .carousel-text{
@@ -44,13 +51,23 @@ body{
 }
 
 .con_2 {
-	background: url('lets_party.jpg');
+	background: url('party1.jpg');
 	background-position: center;
 	background-size: cover;
 }
 
 .con_3 {
-	background: url('event_2.jpg');
+	background: url('party2.jpeg');
+	background-position: center;
+	background-size: cover;
+}
+.con_4 {
+	background: url('party3.jpg');
+	background-position: center;
+	background-size: cover;
+}
+.con_5 {
+	background: url('party4.jpg');
 	background-position: center;
 	background-size: cover;
 }
