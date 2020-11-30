@@ -133,17 +133,19 @@
         <div class="row">
             <div class="col-12 text-center">
                 <div class="row">
-                    <div class="col-0 col-lg-2"></div>
+                    <div class="d-none d-lg-block col-lg-2"></div>
                     <div class="col-12 col-lg-8">
-                        <form method="GET" class="p-4 mt-5 bg_white shadow">
+                        <form method="GET" class="p-4 mt-5 bg-white shadow">
                             {{form|crispy}}
                             <button type="submit" class="btn btn-primary mb-2 mt-3">Search</button>
                         </form> 
                         <h3 class="mb-5 mt-5"> Choice and have fun! We found {{all| length}} </h3> 
                     </div>
-                    <div class="col-0 col-lg-2"></div>
+                    <div class="d-none d-lg-block col-lg-2"></div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 text-center mt-2 mb-4">  
                 {% for party in all %}
