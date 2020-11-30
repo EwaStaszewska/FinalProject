@@ -10,8 +10,19 @@ class PartyForm(forms.ModelForm):
 
 class SearchingForm(forms.Form):
     # date = forms.DateField(required=False, label= 'Date', widget= forms.SelectDateWidget)
-    date = forms.DateField(required=False, label= 'Date')
-    city = forms.CharField(max_length = 20, required = False, label='City')
+
+    date = forms.DateField(required=False, label= 'Date', widget=forms.TextInput(attrs={
+        'class':'form-control',
+        'type': 'date'
+    }))
+
+    city = forms.CharField(max_length = 20, required = False, label='City', widget=forms.TextInput(attrs={
+        'class':'form-control',
+        'placeholder': 'Enter your city..',
+        }))
+
     bolean_field = forms.BooleanField(required=False, label= 'Exact date')
+
+    
     
 
