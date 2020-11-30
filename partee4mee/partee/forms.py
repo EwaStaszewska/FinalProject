@@ -23,6 +23,3 @@ class SearchingForm(forms.Form):
 
     bolean_field = forms.BooleanField(required=False, label= 'Exact date',help_text='Search only this date')
 
-    
-    
-
