@@ -21,7 +21,7 @@ class SearchingForm(forms.Form):
         'placeholder': 'Enter your city..',
         }))
 
-    bolean_field = forms.BooleanField(required=False, label= 'Exact date')
+    bolean_field = forms.BooleanField(required=False, label= 'Exact date',help_text='Search only this date')
 
     
     
