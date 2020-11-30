@@ -15,6 +15,11 @@ body{
 .navbar_bg{
 	background-color: #89cff0
 }
+ 
+/*need to corect, done quickly*/
+#user_name {
+	margin-left: 1500px;
+}
 
 /* carousel  */
 

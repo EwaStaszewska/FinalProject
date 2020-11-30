@@ -3,6 +3,7 @@ from .models import Party
 from .forms import PartyForm,SearchingForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 
@@ -60,7 +61,13 @@ def your_account(request):
     context={
         'user':user,
         'user_party_advert' : user_party_advert,
-
-
     }
     return render(request,'accounts.html',context)
+
+
+def signed_up(request):
+    signed_up_events = ['lody', 'milki']
+    context={
+        'signed_up_events' : signed_up_events,
+    }
+    return render(request, 'signed_up_events.html',)
