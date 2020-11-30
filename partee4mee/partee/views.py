@@ -51,3 +51,16 @@ def add(request):
         return redirect(main)
 
     return render(request, 'add_party.html', {"form":form}) 
+
+
+@login_required
+def your_account(request):
+    user_party_advert = Party.objects.filter(author= request.user)
+    user = request.user
+    context={
+        'user':user,
+        'user_party_advert' : user_party_advert,
+
+
+    }
+    return render(request,'accounts.html',context)

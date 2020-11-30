@@ -33,21 +33,24 @@
                 <li class="nav-item active">
                     <a class="nav-link text-white" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'register' %}">Registration</a>
+                    <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'add_event' %}">Add new event</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'register' %}">Registration</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
-
-
-
 
     <!-- Carusel -->
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
@@ -129,24 +132,34 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <form method="GET" class="p-4 mt-3">
-                    {{form|crispy}}
-                    <button type="submit" class="btn btn-primary mb-2">Search</button>
-                </form> 
-                <h3 class="mb-4 mt-2"> Choice and have fun! We found {{all| length}} </h3> 
+                <div class="row">
+                    <div class="d-none d-lg-block col-lg-2"></div>
+                    <div class="col-12 col-lg-8">
+                        <form method="GET" class="p-4 mt-5 bg-white shadow">
+                            {{form|crispy}}
+                            <button type="submit" class="btn btn-primary mb-2 mt-3">Search</button>
+                        </form> 
+                        <h3 class="mb-5 mt-5"> Choice and have fun! We found {{all| length}} </h3> 
+                    </div>
+                    <div class="d-none d-lg-block col-lg-2"></div>
+                </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 text-center mt-2 mb-4">  
                 {% for party in all %}
                     <div class="row">
                         <div class="col-1 col-md-2"></div>
                         <div class="col-10 col-md-8">
-                            <div class="card bg-primary text-center mb-4 p-2 card-searching">
+                            <div class="card bg-primary text-center mb-4 p-2 card-searching shadow-lg rounded">
                                 <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}</p>
                                 <div class="mb-2 text-center">
-                                    <div class="col-3"></div>
-                                    <a href="#" class="btn btn-warning col-6">Sign up</a>
-                                    <div class="col-3"></div>
+                                    <div class="row">
+                                        <div class="col-3"></div>
+                                        <a href="#" class="btn btn-warning col-6">Sign up</a>
+                                        <div class="col-3"></div>                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
