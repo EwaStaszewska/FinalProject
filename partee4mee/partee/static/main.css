@@ -8,6 +8,7 @@
 
 body{
 	/* background-color: #f8f9fa !important */
+	min-height: 100 vh;
 }
 
 /* navbar */
@@ -17,9 +18,14 @@ body{
 }
  
 /*need to corect, done quickly*/
-#user_name {
+/* #user_name {
 	margin-left: 1500px;
+} */
+
+.xyz{
+	background-color: black;
 }
+
 
 /* carousel  */
 

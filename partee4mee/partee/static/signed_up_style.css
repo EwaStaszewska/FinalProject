@@ -1,0 +1,26 @@
+*{
+	margin: 0;
+	padding:0;
+	box-sizing:border-box;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+
+.min_height_div{
+	min-height: 87vh;
+}
+/* navbar */
+
+.navbar_bg{
+	background-color: #89cff0
+}
+
+.footer {
+	height: 5vh;
+	background-color: black;
+}
+
+.footer p{
+	color: white;
+}
