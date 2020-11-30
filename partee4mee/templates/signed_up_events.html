@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'signed_up_style.css' %}">
     <link rel="icon" href="{% static 'base/icons/favicon.ico' %}">
     <title>www.Partee4Mee.pl</title>
     {% comment %} bootstrap link below {% endcomment %}
@@ -46,47 +46,58 @@
         </div>
     </nav>
 
-    <div>
+{% comment %} min_height_div to footer {% endcomment %}
+
+
+    <div class="min_height_div">
+        <div class="div">
     {% comment %} draft {% endcomment %}
-        <h2 class="text-center mb-2 mt-2 p-3">You've signed up to {{signed_up_events|length }} events.</h2>
-        <div class="container">
-            <div class="row">
-                {% for user_advert in signed_up_events%}
-                    <div class="col-1 col-md-2"></div>
-                    <div class="col-10 col-md-8">
-                        <div class="card bg-white text-center mb-4 p-2 shadow-lg rounded">
-                            <p>There is a {{user_advert.party_type}} on <strong>{{user_advert.date}}</strong><br> {{user_advert.description}}   [{{user_advert.id}}] <br>  {{user_advert.city}}<br> free space: {{user_advert.free_space}}</p>
-                            <div class="mb-2 text-center">
-                                <div class="row">
-                                    <div class="col-3"></div>
-                                    <a href="#" class="btn btn-success col-3 mr-2">Edit</a>
-                                    <a href="#" class="btn btn-danger col-3">Delete</a>
-                                    <div class="col-3"></div>                        
+            <h2 class="text-center mb-2 mt-2 p-3">You've signed up to {{signed_up_events|length }} events.</h2>
+            <div class="container">
+                <div class="row">
+                    {% for user_advert in signed_up_events%}
+                        <div class="col-1 col-md-2"></div>
+                        <div class="col-10 col-md-8">
+                            <div class="card bg-white text-center mb-4 p-2 shadow-lg rounded">
+                                <p>There is a {{user_advert.party_type}} on <strong>{{user_advert.date}}</strong><br> {{user_advert.description}}   [{{user_advert.id}}] <br>  {{user_advert.city}}<br> free space: {{user_advert.free_space}}</p>
+                                <div class="mb-2 text-center">
+                                    <div class="row">
+                                        <div class="col-3"></div>
+                                        <a href="#" class="btn btn-success col-3 mr-2">Edit</a>
+                                        <a href="#" class="btn btn-danger col-3">Delete</a>
+                                        <div class="col-3"></div>                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-1 col-md-2"></div>  
-                {% endfor %}
-        
-        
-            </div>
+                        <div class="col-1 col-md-2"></div>  
+                    {% endfor %}
+            
+            
+                </div>
 
-            <!-- Test for signed events -->
-            <div>
-                {% for x in signed_up_events %}
-                    <p>{{ x }}</p>
-                {% endfor %}
+                <!-- Test for signed events -->
+                <div>
+                    {% for x in signed_up_events %}
+                        <p>{{ x }}</p>
+                    {% endfor %}
 
+                </div>
             </div>
+            {% comment %} end draft  {% endcomment %}
         </div>
-        {% comment %} end draft  {% endcomment %}
-    </div>
+ 
+    </div>      <!-- End min-height div -->
+
+
+{% comment %} end min_height_div to footer  {% endcomment %}
+
 
     <!-- Footer -->
     <div class="footer text-center p-1">
         <p>Partee4Mee &copy; All rights reserved.</p>
     </div>
+
 
 
 
