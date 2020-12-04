@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 
-
 def main(request):
     form = SearchingForm(request.GET)
     total_advertisement = Party.objects.all()
@@ -39,7 +38,6 @@ def main(request):
     return render(request, "main.html",context)
 
 
-
 # requirements to add form: only for logged in users.
 @login_required
 def add(request):
@@ -65,9 +63,29 @@ def your_account(request):
     return render(request,'accounts.html',context)
 
 
+# def signed_up(request, pk):
+#     signed_up_events = Party.signed_users.all()
+#     x = signed_up_events.party.id_set.all() 
+
+#     context={
+#         'signed_up_events' : signed_up_events,
+#         'x' : x,
+#     }
+
+#     return render(request, 'signed_up_events.html', context)
+
+
 def signed_up(request):
-    signed_up_events = ['lody', 'milki']
+    signed_up_events = Party.objects.all()
+    user = request.user
     context={
-        'signed_up_events' : signed_up_events,
+        'signed_up_events' : [],
     }
-    return render(request, 'signed_up_events.html',)
+
+    for event in signed_up_events:
+        all_user = event.signed_users.all()
+        if user in all_user:
+            context['signed_up_events'].append(event)
+
+    return render(request, 'signed_up_events.html', context)
+

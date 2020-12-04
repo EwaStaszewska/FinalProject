@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, DateTimeField, TextField, SmallIntegerField, ForeignKey, DO_NOTHING,CASCADE
+from django.db.models import Model, CharField, DateTimeField, TextField, SmallIntegerField, ForeignKey, DO_NOTHING,CASCADE, ManyToManyField
 from datetime import datetime
 from django.contrib.auth.models import User
 
@@ -19,6 +19,7 @@ class Party(Model):
     description = TextField(max_length=100)
     author = ForeignKey(User, on_delete= CASCADE)
     create_date = DateTimeField(auto_now_add=True)
+    signed_users = ManyToManyField(User, related_name="signed_users")
     # author will be add to party in form
 
 
@@ -26,3 +27,6 @@ class Party(Model):
     def __str__(self):
         return f"{self.name} {self.date}"
 
+# class Profile(models.Model):
+#    user = models.OneToOneField(User, on_delete=models.CASCADE)
+#    signed_events = 
