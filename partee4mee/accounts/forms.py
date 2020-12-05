@@ -12,8 +12,10 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name', 'email')
 
-    def clean_password(self):
-        cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
-            raise forms.ValidationError('Hasłą nie są identyczne.')
-        return cd['password2']
+# ????????????????? @Ewa - errors
+
+    # def clean_password(self):
+    #     cd = self.cleaned_data
+    #     if cd['password'] != cd['password2']:
+    #         raise forms.ValidationError('Hasłą nie są identyczne.')
+    #     return cd['password2']
