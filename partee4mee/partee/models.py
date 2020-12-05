@@ -28,4 +28,3 @@ class Party(Model):
         # return f"{self.name} {self.date}" 
         return f"{self.signed_users}" 
 
- 
