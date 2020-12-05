@@ -6,7 +6,7 @@ class PartyForm(forms.ModelForm):
     class Meta:
         model = Party  
         fields = ["date", "city", "party_type", "free_space",
-        "description", "name"]
+        "description", "name","signed_users"]
 
 class SearchingForm(forms.Form):
     # date = forms.DateField(required=False, label= 'Date', widget= forms.SelectDateWidget)

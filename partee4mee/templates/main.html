@@ -130,7 +130,7 @@
     <div class="container-fluid">
         <div class="row text-center bg-light">
             <div class="col-12 text-center p-4  first-div-form p-5">
-                <h2>Choice your party from {{total| length}} advertisement</h2>
+                <h2>Choose your party from {{total| length}} advertisements</h2>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                             {{form|crispy}}
                             <button type="submit" class="btn btn-primary mb-2 mt-3">Search</button>
                         </form> 
-                        <h3 class="mb-5 mt-5"> Choice and have fun! We found {{all| length}} </h3> 
+                        <h3 class="mb-5 mt-5"> Choose and have fun! We found {{all| length}} </h3> 
                     </div>
                     <div class="d-none d-lg-block col-lg-2"></div>
                 </div>
@@ -159,7 +159,8 @@
                         <div class="col-1 col-md-2"></div>
                         <div class="col-10 col-md-8">
                             <div class="card bg-primary text-center mb-4 p-2 card-searching shadow-lg rounded">
-                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}}</p>
+                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}} <br> users: {{party.signed_users}}
+                                </p>
                                 <div class="mb-2 text-center">
                                     <div class="row">
                                         <div class="col-3"></div>
