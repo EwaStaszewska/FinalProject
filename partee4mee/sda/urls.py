@@ -22,7 +22,7 @@ urlpatterns = [
     path('main/', main, name="main"),
     path('add_party/', add, name="add_event"),
     path('your_account/',your_account , name="your_account"),
-    path('signed_up_events/', signed_up, name="signed_up"),
-    path ('accounts/', include('accounts.urls'))
+    path('signed_up_events/<int:pk>', signed_up, name="signed_up"),
+    path ('accounts/', include('accounts.urls')),
 ]
 

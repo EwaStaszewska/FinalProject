@@ -159,12 +159,12 @@
                         <div class="col-1 col-md-2"></div>
                         <div class="col-10 col-md-8">
                             <div class="card bg-primary text-center mb-4 p-2 card-searching shadow-lg rounded">
-                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}} <br> users: {{party.signed_users}}
+                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}} <br> users:  {% for user in party.signed_users.all %} {{ user.username }} {% endfor %}
                                 </p>
                                 <div class="mb-2 text-center">
                                     <div class="row">
                                         <div class="col-3"></div>
-                                        <a href="#" class="btn btn-warning col-6">Sign up</a>
+                                        <a href="{% url 'signed_up' party.id %}" class="btn btn-warning col-6">Sign up</a>
                                         <div class="col-3"></div>                        
                                     </div>
                                 </div>
