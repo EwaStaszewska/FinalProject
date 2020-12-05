@@ -19,7 +19,7 @@ class Party(Model):
     description = TextField(max_length=100)
     author = ForeignKey(User, on_delete= CASCADE)
     create_date = DateTimeField(auto_now_add=True)
-    signed_users = ManyToManyField(User, related_name="signed_users", blank=True, null=True)
+    signed_users = ManyToManyField(User, related_name="signed_event", blank=True, null=True)
     # author will be add to party in form
 
 
@@ -28,6 +28,3 @@ class Party(Model):
         # return f"{self.name} {self.date}" 
         return f"{self.signed_users}" 
 
-# class Profile(models.Model):
-#    user = models.OneToOneField(User, on_delete=models.CASCADE)
-#    signed_events = 

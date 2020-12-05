@@ -63,29 +63,18 @@ def your_account(request):
     return render(request,'accounts.html',context)
 
 
-# def signed_up(request, pk):
-#     signed_up_events = Party.signed_users.all()
-#     x = signed_up_events.party.id_set.all() 
-
-#     context={
-#         'signed_up_events' : signed_up_events,
-#         'x' : x,
-#     }
-
-#     return render(request, 'signed_up_events.html', context)
-
-
-def signed_up(request):
-    signed_up_events = Party.objects.all()
+def signed_up(request, pk):
+    event = Party.objects.get(pk=pk)
     user = request.user
+
+    event.signed_users.add(user)
+    if event.free_space > 0:
+        event.free_space -= 1
+    else:
+        return redirect(main)
+    event.save()
     context={
-        'signed_up_events' : [],
+        'signed_up_events' : user.signed_event.all(),
     }
 
-    for event in signed_up_events:
-        all_user = event.signed_users.all()
-        if user in all_user:
-            context['signed_up_events'].append(event)
-
     return render(request, 'signed_up_events.html', context)
-
