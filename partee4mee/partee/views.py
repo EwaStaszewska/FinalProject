@@ -63,16 +63,38 @@ def your_account(request):
     return render(request,'accounts.html',context)
 
 
-def signed_up(request, pk):
-    event = Party.objects.get(pk=pk)
-    user = request.user
 
-    event.signed_users.add(user)
-    if event.free_space > 0:
-        event.free_space -= 1
-    else:
-        return redirect(main)
-    event.save()
+# zmienic nazwe
+def party_signed_up_by_user(request, pk):
+    user = request.user
+    event = Party.objects.get(pk = pk)
+
+    if user not in event.signed_users.all():
+        if event.free_space > 0: 
+            event.signed_users.add(user)
+            event.free_space -= 1
+            event.save()
+        else:
+            print("Full space")
+            return redirect(main)
+            # stworzyc nowy widok na blad jak nie ma miejsc + kolor buttona uzaleznic od ilosci miejsc
+    else: 
+        print("You were signed up to event")
+        return redirect(user_signed_up_events)
+
+
+
+
+    # context={
+    #     'signed_up_events' : user.signed_event.all(),
+    # }
+
+    return redirect(user_signed_up_events)
+    # return redirect()
+
+
+def user_signed_up_events(request):
+    user = request.user
     context={
         'signed_up_events' : user.signed_event.all(),
     }
