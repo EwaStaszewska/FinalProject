@@ -63,6 +63,12 @@ def your_account(request):
     return render(request,'accounts.html',context)
 
 
+def error_site_signed(request):
+    context = {
+        'message': 'Brak miejsc na imprezie, nie możesz się zapisać'
+    }
+
+    return render(request,'error_signed.html',context)
 
 # zmienic nazwe
 def party_signed_up_by_user(request, pk):
@@ -76,7 +82,8 @@ def party_signed_up_by_user(request, pk):
             event.save()
         else:
             print("Full space")
-            return redirect(main)
+            return redirect(error_site_signed)
+
             # stworzyc nowy widok na blad jak nie ma miejsc + kolor buttona uzaleznic od ilosci miejsc
     else: 
         print("You were signed up to event")
