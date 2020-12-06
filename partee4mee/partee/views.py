@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Party
 from .forms import PartyForm,SearchingForm
 from datetime import datetime
@@ -82,21 +82,27 @@ def party_signed_up_by_user(request, pk):
         print("You were signed up to event")
         return redirect(user_signed_up_events)
 
-
-
-
-    # context={
-    #     'signed_up_events' : user.signed_event.all(),
-    # }
-
     return redirect(user_signed_up_events)
-    # return redirect()
 
 
 def user_signed_up_events(request):
     user = request.user
     context={
-        'signed_up_events' : user.signed_event.all(),
+        'signed_up_events': user.signed_event.all(),
     }
 
     return render(request, 'signed_up_events.html', context)
+
+
+# events edit logic
+def edit_event(request, id):
+    event = get_object_or_404(Party, pk=id, author=request.user)
+    form = PartyForm(request.POST or None, instance=event)
+
+
+    if form.is_valid():
+        form.save()
+        return redirect(user_signed_up_events)
+
+    return render(request, 'edit_event.html', {"form": form})
+
