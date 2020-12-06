@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from partee.views import main, add, your_account, party_signed_up_by_user,user_signed_up_events
+from partee.views import main, add, your_account, party_signed_up_by_user,user_signed_up_events,error_site_signed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('your_account/',your_account , name="your_account"),
     path('signed_up_events/<int:pk>', party_signed_up_by_user, name="party_signed_up_by_user"),
     path('user_signed_up_events/', user_signed_up_events, name="user_signed_up_events"),
+    path('error/', error_site_signed, name="error_site_signed"),
     path ('accounts/', include('accounts.urls')),
 ]
 
