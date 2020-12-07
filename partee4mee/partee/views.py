@@ -70,6 +70,7 @@ def error_site_signed(request):
 
     return render(request,'error_signed.html',context)
 
+
 # zmienic nazwe
 def party_signed_up_by_user(request, pk):
     user = request.user
@@ -89,15 +90,7 @@ def party_signed_up_by_user(request, pk):
         print("You were signed up to event")
         return redirect(user_signed_up_events)
 
-
-
-
-    # context={
-    #     'signed_up_events' : user.signed_event.all(),
-    # }
-
     return redirect(user_signed_up_events)
-    # return redirect()
 
 
 def user_signed_up_events(request):
@@ -120,3 +113,48 @@ def edit_event(request, id):
         return redirect(user_signed_up_events)
 
     return render(request, 'edit_event.html', {"form": form})
+
+
+# edit event from My Event site a redirect to the same site after click Edit button in edit template
+def edit_event_2(request, id):
+    event = get_object_or_404(Party, pk=id, author=request.user)
+    form = PartyForm(request.POST or None, instance=event)
+
+
+    if form.is_valid():
+        form.save()
+        return redirect(your_account)
+
+    return render(request, 'edit_event.html', {"form": form})
+
+
+# user unsubscribe event when click on Sign Off button
+def party_signed_off_by_user(request, pk):
+    user = request.user
+    event = Party.objects.get(pk = pk)
+
+    if user in event.signed_users.all():
+        if event.free_space > 0:
+            event.signed_users.remove(user)
+            event.free_space += 1
+            event.save()
+        else:
+            print("Full space")
+            return redirect(error_site_signed)
+
+            # stworzyc nowy widok na blad jak nie ma miejsc + kolor buttona uzaleznic od ilosci miejsc
+    else:
+        print("You were signed up to event")
+        return redirect(user_signed_up_events)
+
+    return redirect(user_signed_up_events)
+
+
+def delete_event_by_user(request, pk):
+    event = get_object_or_404(Party, pk=pk, author=request.user)
+
+    if request.method == "POST":
+        event.delete()
+        return redirect(your_account)
+
+    return render(request, 'delete_event.html', {"event": event})

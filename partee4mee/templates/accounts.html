@@ -63,8 +63,8 @@
                             <div class="mb-2 text-center">
                                 <div class="row">
                                     <div class="col-3"></div>
-                                    <a href="#" class="btn btn-success col-3 mr-2">Edit</a>
-                                    <a href="#" class="btn btn-danger col-3">Delete</a>
+                                    <a href="{% url 'edit_2' user_advert.id %}" class="btn btn-success col-3 mr-2">Edit</a>
+                                    <a href="{% url 'delete_event' user_advert.id %}" class="btn btn-danger col-3">Delete</a>
                                     <div class="col-3"></div>                        
                                 </div>
                             </div>
