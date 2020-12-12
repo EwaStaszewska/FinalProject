@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %} Logowanie {% endblock %}
+{% block title %} LogIn {% endblock %}
 {% load crispy_forms_tags %}
 
     <p> {{user.username}} </p>
 {% block page %}
-    <h1> Logowanie </h1>
+    <h1> LogIn </h1>
     {% if form.errors %}
     <p>
         The name of user or password are incorrect
