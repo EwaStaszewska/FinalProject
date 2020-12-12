@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %} Logowanie {% endblock %}
+{% load crispy_forms_tags %}
 
     <p> {{user.username}} </p>
 {% block page %}
@@ -15,7 +16,7 @@
     {% endif %}
     <div class= "login-form">
         <form method = "post">
-            {{ form.as_p }}
+            {{ form|crispy }}
             {% csrf_token %}
             {% comment %} <input type = "hidden" name ="next" value ="{{next}}"/> {% endcomment %}
             {% comment %} <a href="{% url "add_event" %}" class="btn btn-primary" type="submit">Log in </a> {% endcomment %}
