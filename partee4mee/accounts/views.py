@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import UserRegistrationForm
+from django.contrib import messages
 
 
 
@@ -33,6 +34,7 @@ def register(request):
             new_user.set_password(
                 user_form.cleaned_data['password'])
             new_user.save()
+            message = messages.success(request, "Your account was succesfully created" )
             return render(request,
                             'register.html',
             {'new_user': new_user})
