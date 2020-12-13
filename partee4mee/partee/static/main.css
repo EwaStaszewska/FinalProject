@@ -11,6 +11,10 @@ body{
 	cursor: default;
 }
 
+.min_height_div{
+	min-height: 87vh;
+}
+
 /* navbar */
 
 .nav-link{
@@ -108,7 +112,7 @@ body{
 
 .footer {
 	height: 35px;
-	background-color: #343a40
+	background-color: black;
 }
 
 .footer p{
