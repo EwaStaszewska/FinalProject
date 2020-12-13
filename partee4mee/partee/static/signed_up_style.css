@@ -43,3 +43,7 @@ body{
 .footer p{
 	color: white;
 }
+
+.nav-link{
+	font-family: 'Padauk', sans-serif;
+}

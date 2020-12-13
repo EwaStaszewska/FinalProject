@@ -3,6 +3,7 @@
 	padding:0;
 	box-sizing:border-box;
 	font-family: 'Roboto Condensed', sans-serif;
+	/* font-family: 'Padauk', sans-serif; */
 }
 
 
@@ -12,9 +13,9 @@ body{
 
 /* navbar */
 
-/* .navbar_bg{
-	background-color: #89cff0
-} */
+.nav-link{
+	font-family: 'Padauk', sans-serif;
+}
  
 /*need to corect, done quickly*/
 /* #user_name {
