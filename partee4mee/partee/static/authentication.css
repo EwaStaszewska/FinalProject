@@ -2,13 +2,19 @@
 	margin: 0;
 	padding:0;
 	box-sizing:border-box;
-	font-family: 'Roboto Condensed', sans-serif;
+
 }
 
+
+
 body{
+	background-color: #f8f9fa !important;
 	cursor: default;
 }
 
+.container{
+	height: 83vh;
+}
 /* navbar */
 
 .logo_text_endwith{
@@ -26,20 +32,19 @@ body{
 }
 
 
-.min_height_div{
-	min-height: 87vh;
-}
-/* navbar */
+.margin_signin{
+    margin-top: 11rem;
 
-.navbar_bg{
-	background-color: #89cff0
-}
+/* }
+.margin_register{
+    margin-top: 100px;
 
-.footer {
-	height: 5vh;
-	background-color: black;
-}
+} */
 
-.footer p{
-	color: white;
+/* .form-register{
+	margin-top: 1.5rem;
+} */
+
+.login-form{
+    margin-top: 1.5rem;
 }
