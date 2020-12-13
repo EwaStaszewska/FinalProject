@@ -21,10 +21,11 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar_bg">
-        <a class="navbar-brand text-white " href="{% url 'main' %}"><img src="{% static 'logo_party4mee.png' %} " alt=""></a>
+    <nav class="navbar navbar-expand-lg navbar_bg bg-dark">
+        {% comment %} <a class="navbar-brand text-white " href="{% url 'main' %}"><strong class="logo_underline">P</strong>artee<strong class="logo_underline">4</strong><span class="span_underline_logo"><strong class="logo_underline">M</strong><span class="logo_text_endwith">ee!</span></a> {% endcomment %}
+        <a href="{% url 'main' %}" class="navbar-brand text-white"><img src="{% static 'logo_party4mee.png'%}" alt="" style="width:35px; height:35px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon bg-dark"></span>
+            <span class="navbar-toggler-icon" style="width:auto"><p style="color:white; line-height:initial" class="text-center">Menu</p></span>
         </button>
 
         <!-- navbar -->
@@ -64,53 +65,28 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active con_0">
             <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
                 <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
+                <p class='display-3'>Welcome in party app!</p>
+                <p class='d-sm-block'>It's the best place for you...</p>
             </div>
         </div>
 
         <div class="carousel-item con_1">
             <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
                 <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
+                <p class='display-3'>Choose the best party for you</p>
+                <p class='d-sm-block'>You can find party in your city and date</p>
             </div>
         </div>
-        
         <div class="carousel-item con_2">
-            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light ">
-                <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
-            </div>
-        </div>
-        <div class="carousel-item con_3">
             <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
                 <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
-            </div>
-        </div>
-        <div class="carousel-item con_4">
-            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
-                <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
-            </div>
-        </div>
-        <div class="carousel-item con_5">
-            <div class="carousel-text h-100 p-5 d-flex flex-column justify-content-end justify-content-md-center text-center text-light">
-                <div class="carousel-shadow"></div>
-                <p class='display-3'>xxx</p>
-                <p class='d-sm-block'>xxx</p>
+                <p class='display-3'>Meet new friends and have fun!</p>
+                <p class='d-sm-block'>Add colour to your life</p>
             </div>
         </div>
     </div>
@@ -127,50 +103,61 @@
 
     <!-- End carusel -->
 
-    <div class="container-fluid">
+    {% comment %} <div class="container-fluid">
         <div class="row text-center bg-light">
-            <div class="col-12 text-center p-4  first-div-form p-5">
+            <div class="col-12 text-center p-4 first-div-form p-5">
                 <h2>Choose your party from {{total| length}} advertisements</h2>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
                 <div class="row">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger col-12 mt-5 p-5 text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                    <div class="col-12 text-center mt-5">
+                        <h1>Find something for you</h1>
+                    </div>
                     <div class="d-none d-lg-block col-lg-2"></div>
                     <div class="col-12 col-lg-8">
-                        <form method="GET" class="p-4 mt-5 bg-white shadow">
+                        <form method="GET" class="p-4 mt-5 bg-light shadow">
                             {{form|crispy}}
                             <button type="submit" class="btn btn-primary mb-2 mt-3">Search</button>
                         </form> 
-                        <h3 class="mb-5 mt-5"> Choose and have fun! We found {{all| length}} </h3> 
+                        <h3 class="mb-5 mt-5"> Choose and have fun! We found {{all| length}} events</h3> 
                     </div>
                     <div class="d-none d-lg-block col-lg-2"></div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-2"> </div>
             <div class="col-md-8 text-center mt-2 mb-4">  
                 {% for party in all %}
                     <div class="row">
-                        <div class="col-1 col-md-2"></div>
-                        <div class="col-10 col-md-8">
-                            <div class="card bg-primary text-center mb-4 p-2 card-searching shadow-lg rounded">
-                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}} <br> users:  {% for user in party.signed_users.all %} {{ user.username }} {% endfor %}
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <div class="card bg-primary text-center text-light mb-4 p-3 card-searching shadow-lg rounded">
+                                <p>There is a {{party.party_type}} on <strong>{{party.date}}</strong><br> {{party.description}}   [{{party.id}}] <br>  {{party.city}}<br> free space: {{party.free_space}}<br> author: {{party.author}} <br> 
                                 </p>
                                 <div class="mb-2 text-center">
                                     <div class="row">
                                         <div class="col-3"></div>
-                                        <a href="{% url 'party_signed_up_by_user' party.id %}" class="btn btn-warning col-6">Sign up</a>
+                                        <a href="{% url 'party_signed_up_by_user' party.id %}" class="btn btn-warning col-6 ">Sign up</a>
                                         <div class="col-3"></div>                        
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="col-1 col-md-2"></div>
+                        <div class="col-1"></div>
                     </div>
                 {% endfor %}
         

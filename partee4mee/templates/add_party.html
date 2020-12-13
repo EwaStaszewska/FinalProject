@@ -1,22 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!--<title>{% block title_block %} {% endblock %}</title>-->
-    <link rel="stylesheet" href="{% static 'static.css' %}">
-</head>
 
-<body>
-<div>
-    <form method='POST'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add</button>
-    </form>
+
+{% block page %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center mt-3">
+        <h1>Create new event</h1>
+        </div>
+        <div class="col-12 col-md-8 offset-md-2">
+            <form method='POST'>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mb-2 mt-3 offset-3" style="width: 50%">Add event</button>
+            </form>
+
+        </div>
+    </div>
 </div>
-</body>
 
-</html>
+{% endblock %}

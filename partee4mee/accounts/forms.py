@@ -2,9 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Hasło',
+    password = forms.CharField(label='Password',
                                widget=forms.PasswordInput)
-    password2 = forms.CharField(label= 'Powtórz hasło',
+    password2 = forms.CharField(label= 'Password again',
                                widget= forms.PasswordInput)
 
 

@@ -21,10 +21,11 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar_bg">
-        <a class="navbar-brand text-white" href="{% url 'main' %}">Partee4Mee</a>
+    <nav class="navbar navbar-expand-lg navbar_bg bg-dark">
+        {% comment %} <a class="navbar-brand text-white " href="{% url 'main' %}"><strong class="logo_underline">P</strong>artee<strong class="logo_underline">4</strong><span class="span_underline_logo"><strong class="logo_underline">M</strong><span class="logo_text_endwith">ee!</span></a> {% endcomment %}
+        <a href="{% url 'main' %}" class="navbar-brand text-white"><img src="{% static 'logo_party4mee.png'%}" alt="" style="width:35px; height:35px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="width:auto"><p style="color:white; line-height:initial" class="text-center">Menu</p></span>
         </button>
 
         <!-- navbar -->

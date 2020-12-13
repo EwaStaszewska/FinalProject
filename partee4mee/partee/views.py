@@ -4,6 +4,9 @@ from .forms import PartyForm,SearchingForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
+
+
 
 
 def main(request):
@@ -17,11 +20,11 @@ def main(request):
     # city_contains_query,date_query are a var in form in main.html.
 
     if city and not date:
-        all_party = all_party.filter(city__icontains=city).order_by('date')
+        all_party = all_party.filter(city =city).order_by('date')
     if city and date:
-        all_party = all_party.filter(city__icontains=city).filter(date__gte=date).order_by('date')
+        all_party = all_party.filter(city =city).filter(date__gte=date).order_by('date')
     if city and date and bfield:
-        all_party = all_party.filter(city__icontains=city).filter(date__icontains=date).order_by('date')
+        all_party = all_party.filter(city =city).filter(date__icontains=date).order_by('date')
     if date and bfield:
         all_party = all_party.filter(date__icontains=date).order_by('date')
     if date and not bfield:
@@ -36,6 +39,7 @@ def main(request):
     }
 
     return render(request, "main.html",context)
+
 
 
 # requirements to add form: only for logged in users.
@@ -65,10 +69,17 @@ def your_account(request):
 
 def error_site_signed(request):
     context = {
-        'message': 'Brak miejsc na imprezie, nie możesz się zapisać'
+        'message': "This party don't have free places"
     }
 
     return render(request,'error_signed.html',context)
+
+def access_dismiss(request):
+    context = {
+        'message': "You don't have access to this data. "
+    }
+
+    return render(request,'access_dismiss.html',context)
 
 
 # zmienic nazwe
@@ -76,16 +87,21 @@ def party_signed_up_by_user(request, pk):
     user = request.user
     event = Party.objects.get(pk = pk)
 
+
+
     if user not in event.signed_users.all():
         if event.free_space > 0: 
-            event.signed_users.add(user)
-            event.free_space -= 1
-            event.save()
+            try:
+                event.signed_users.add(user)
+                event.free_space -= 1
+                event.save()
+            except:
+                return redirect('login')
         else:
-            print("Full space")
-            return redirect(error_site_signed)
+            message = messages.error(request, f'No free spaces available for {event.name} in {event.city}.', extra_tags=str(pk) )
+            return redirect(main)
 
-            # stworzyc nowy widok na blad jak nie ma miejsc + kolor buttona uzaleznic od ilosci miejsc
+
     else: 
         print("You were signed up to event")
         return redirect(user_signed_up_events)
@@ -104,7 +120,12 @@ def user_signed_up_events(request):
 
 # events edit logic
 def edit_event(request, id):
-    event = get_object_or_404(Party, pk=id, author=request.user)
+    try:
+        event = get_object_or_404(Party, pk=id, author=request.user)
+    except:
+        message = messages.error(request, f"You are not authorized to edit this event.")
+        return redirect(user_signed_up_events)
+    
     form = PartyForm(request.POST or None, instance=event)
 
 
@@ -112,12 +133,16 @@ def edit_event(request, id):
         form.save()
         return redirect(user_signed_up_events)
 
-    return render(request, 'edit_event.html', {"form": form})
+
+    return render(request, 'edit_event.html', {"form": form,'message': 'Ok'})
 
 
 # edit event from My Event site a redirect to the same site after click Edit button in edit template
 def edit_event_2(request, id):
-    event = get_object_or_404(Party, pk=id, author=request.user)
+    try:
+        event = get_object_or_404(Party, pk=id, author=request.user)
+    except:
+        return redirect(access_dismiss)
     form = PartyForm(request.POST or None, instance=event)
 
 
@@ -125,7 +150,8 @@ def edit_event_2(request, id):
         form.save()
         return redirect(your_account)
 
-    return render(request, 'edit_event.html', {"form": form})
+
+    return render(request, 'edit_event.html', {"form": form, 'message': 'Ok'})
 
 
 # user unsubscribe event when click on Sign Off button
@@ -134,19 +160,15 @@ def party_signed_off_by_user(request, pk):
     event = Party.objects.get(pk = pk)
 
     if user in event.signed_users.all():
-        if event.free_space > 0:
             event.signed_users.remove(user)
             event.free_space += 1
             event.save()
-        else:
-            print("Full space")
-            return redirect(error_site_signed)
-
             # stworzyc nowy widok na blad jak nie ma miejsc + kolor buttona uzaleznic od ilosci miejsc
     else:
-        print("You were signed up to event")
         return redirect(user_signed_up_events)
-
+    
+    message = messages.error(request, f"You have been successfully unsubscribed from {event.name} in {event.city}.", extra_tags = str(pk))
+    # message = messages.error(request, f"You have been successfully unsubscribed from {event.name} in {date(event.date)}.", extra_tags = str(pk))
     return redirect(user_signed_up_events)
 
 
