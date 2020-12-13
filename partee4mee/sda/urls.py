@@ -20,7 +20,7 @@ from partee.views import main, add, your_account, party_signed_up_by_user, user_
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/', main, name="main"),
+    path('', main, name="main"),
     path('add_party/', add, name="add_event"),
     path('delete_party/<int:pk>', delete_event_by_user, name="delete_event"),
     path('your_account/',your_account , name="your_account"),
