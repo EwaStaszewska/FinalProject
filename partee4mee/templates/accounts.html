@@ -53,38 +53,40 @@
         </div>
     </nav>
 
-    <div>
-    {% comment %} draft {% endcomment %}
-        <h2 class="text-center mb-2 mt-2 p-3">You've created {{user_party_advert|length }} adverts.</h2>
-        <div class="container">
-            <div class="row">
-                {% for user_advert in user_party_advert%}
-                    <div class="col-1 col-md-2"></div>
-                    <div class="col-10 col-md-8">
-                        <div class="card bg-white text-center mb-4 p-2 shadow-lg rounded">
-                            <p>There is a {{user_advert.party_type}} on <strong>{{user_advert.date}}</strong><br> {{user_advert.description}}   [{{user_advert.id}}] <br>  {{user_advert.city}}<br> free space: {{user_advert.free_space}}</p>
-                            <div class="mb-2 text-center">
-                                <div class="row">
-                                    <div class="col-3"></div>
-                                    <a href="{% url 'edit_2' user_advert.id %}" class="btn btn-success col-3 mr-2">Edit</a>
-                                    <a href="{% url 'delete_event' user_advert.id %}" class="btn btn-danger col-3">Delete</a>
-                                    <div class="col-3"></div>                        
+    <div class="min_height_div">
+        <div>
+        {% comment %} draft {% endcomment %}
+            <h2 class="text-center mb-2 mt-2 p-3">You've created {{user_party_advert|length }} adverts.</h2>
+            <div class="container">
+                <div class="row">
+                    {% for user_advert in user_party_advert%}
+                        <div class="col-1 col-md-2"></div>
+                        <div class="col-10 col-md-8">
+                            <div class="card bg-white text-center mb-4 p-2 shadow-lg rounded">
+                                <p>There is a {{user_advert.party_type}} on <strong>{{user_advert.date}}</strong><br> {{user_advert.description}}   [{{user_advert.id}}] <br>  {{user_advert.city}}<br> free space: {{user_advert.free_space}}</p>
+                                <div class="mb-2 text-center">
+                                    <div class="row">
+                                        <div class="col-3"></div>
+                                        <a href="{% url 'edit_2' user_advert.id %}" class="btn btn-success col-3 mr-2">Edit</a>
+                                        <a href="{% url 'delete_event' user_advert.id %}" class="btn btn-danger col-3">Delete</a>
+                                        <div class="col-3"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-1 col-md-2"></div>  
-                {% endfor %}
-        
-        
-            </div>
+                        <div class="col-1 col-md-2"></div>
+                    {% endfor %}
+
+
+                </div>
 
             <!-- Test for signed events -->
-            <div>
-                {% for x in signed_up_events %}
-                    <p>{{ x }}</p>
-                {% endfor %}
+<!--            <div>-->
+<!--                {% for x in signed_up_events %}-->
+<!--                    <p>{{ x }}</p>-->
+<!--                {% endfor %}-->
 
+<!--            </div>-->
             </div>
         </div>
         {% comment %} end draft  {% endcomment %}
