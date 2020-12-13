@@ -99,7 +99,7 @@ body{
 	background-color: lightgray
 }
 
-.card-searching{
+.card-searching {
 	transition: .5s;
 }
 .card-searching:hover{
@@ -120,9 +120,15 @@ body{
 }
 
 
+.button-my_hover:hover{
+    transform: scale(1.1);
+    transition: .5s;
+
+}
 
 @media screen and (max-width: 1200px) {
 	.carousel-item {
 	  height: 22rem;
 	}
   }
+
